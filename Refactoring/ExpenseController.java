@@ -48,8 +48,11 @@ import io.swagger.annotations.ApiOperation;
 /*Refactoring generale
 	Migliorata l'indentazione delle funzioni per evitare eccessiva Horizontal Length
 	Indentate le parentesi con maggiore efficacia per una migliore lettura
-	Si suggerisce inoltre la creazione di una funzione generale isOwner? esterna a qyesta
-	classe per il confronto fra un employee e il proprietaro di una expense
+	Nella classe ExpenseService sono state aggiunte le classi isOwner(emp,expense) e
+  isManager(emp,expense), per evitare di ripetere il controllo emp.getId() ==
+  expense.getEmployee().getId()) e expense.getProject().getProjectManager()
+  .getId() == emp.getId()) che precedentemente erano stati usati eccessivamente
+  in questa classe
 */
 public class ExpenseController {
 
@@ -91,9 +94,9 @@ public class ExpenseController {
 
         Expense expense = expenseService.getExpense(id);
         Employee emp = getEmployee();
-				if (expense.getEmployee().getId() == emp.getId()
-            || expense.getProject().getProjectManager().getId() == emp.getId()
-						|| emp.getRole() == EmployeeRoles.ADMIN)
+				if (expenseService.isOwner(emp, expense) ||
+            expenseService.isManager(emp, expense))
+            || emp.getRole() == EmployeeRoles.ADMIN)
 					return expense;
 				throw new AccessDeniedException("You don't have access to this expense");
     }
@@ -222,16 +225,13 @@ public class ExpenseController {
         Expense expense = expenseService.getExpense(id);
         Employee emp = getEmployee();
 
-        boolean isAuthorized =
-                emp.getRole() == EmployeeRoles.PRJ_MANAGER
-                && expense.getProject()
-                          .getProjectManager()
-                          .getId() == emp.getId()
-                && expense.getEmployee().getId() != emp.getId();
+        boolean isAuthorized = emp.getRole() == EmployeeRoles.PRJ_MANAGER
+                && expenseService.isManager(emp, expense);
+                && expenseService.isOwner(emp, expense);
 
         boolean isAdmin = emp.getRole() == EmployeeRoles.ADMIN;
 
-        boolean isSubmitted =expense.getStatus() == ExpenseStatus.SUBMITTED;
+        boolean isSubmitted = expense.getStatus() == ExpenseStatus.SUBMITTED;
 
         if ((isAuthorized || isAdmin) && isSubmitted) {
             return expenseService.updateExpenseStatus(updates, expense);
@@ -270,11 +270,9 @@ public class ExpenseController {
             throw new AccessDeniedException("Non Modifiable fields given");
         }
 
-        boolean isOwner = emp.getId() == expense.getEmployee().getId();
-
         boolean isSubmitted = expense.getStatus() == ExpenseStatus.SUBMITTED;
 
-        if (isOwner && isSubmitted) {
+        if (expenseService.isOwner(emp,expense) && isSubmitted) {
             return expenseService.updateExpense(updates, expense);
         }
 
@@ -296,10 +294,9 @@ public class ExpenseController {
 
         Employee emp = getEmployee();
         Expense expense = expenseService.getExpense(id);
-        boolean isOwner =  emp.getId() == expense.getEmployee().getId();
         boolean isSubmitted =  expense.getStatus() == ExpenseStatus.SUBMITTED;
 
-        if (isOwner && isSubmitted) {
+        if (expenseService.isOwner(emp,expense) && isSubmitted) {
             expenseService.deleteExpense(id);
             return;
         }
@@ -324,11 +321,9 @@ public class ExpenseController {
         Employee emp = getEmployee();
         for (int id : id_list) {
             Expense expense = expenseService.getExpense(id);
-                              //expense.hasOwner?(emp)
-            boolean isOwner = emp.getId() == expense.getEmployee().getId();
             boolean isSubmitted = expense.getStatus() == ExpenseStatus.SUBMITTED;
 
-            if (!isOwner && isSubmitted) {
+            if (!expenseService.isOwner(emp,expense) && isSubmitted) {
                 throw new AccessDeniedException(
                         "Employee doesn't have access to delete one of the expenses");
             }

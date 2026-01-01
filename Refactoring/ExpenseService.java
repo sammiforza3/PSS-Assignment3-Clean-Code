@@ -24,8 +24,11 @@ import com.adobe.prj.exceptions.BadRequestException;
 import com.adobe.prj.exceptions.NotFoundException;
 
 @Service
-//Refactoring generale
-//Migliorata l'indentazione per una migliore lettura
+/*Refactoring generale
+	Migliorata l'indentazione per una migliore lettura
+	Aggiunte le classi di supporto isManager e isOwner per effettuare
+	controlli senza dover ripetere il codice all'interno
+*/
 public class ExpenseService {
 
 	@Autowired
@@ -47,6 +50,15 @@ public class ExpenseService {
 		map.put("Total", billable_amount + non_billable_amount);
 
 		return map;
+	}
+	
+	public Boolean isManager(Employee emp, Expense expense) {
+		return (expense.getProject().getProjectManager()
+							.getId() == emp.getId())
+	}
+
+	public Boolean isOwner(Employee emp, Expense expense) {
+		return (emp.getId() == expense.getEmployee().getId())
 	}
 
 	@Transactional
