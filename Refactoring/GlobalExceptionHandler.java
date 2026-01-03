@@ -25,10 +25,17 @@ import io.jsonwebtoken.JwtException;
 /*
 	Refactoring generale
 	migliorata l'indentazione delle funzioni
+	Aggoiunta la funzione buildResponse per evitare ripetizioni
 */
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
+
+
+	private ResponseEntity<Object> buildResponse(HttpStatus status, Object body) {
+    return ResponseEntity.status(status).body(body);
+	}
+	
 	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
 	public ResponseEntity<String> handleSQLException(
 					SQLIntegrityConstraintViolationException ex) {
