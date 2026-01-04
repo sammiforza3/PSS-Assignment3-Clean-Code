@@ -21,65 +21,67 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import io.jsonwebtoken.JwtException;
 
-// Global Exception Handler
+
 /*
 	Refactoring generale
-	migliorata l'indentazione delle funzioni
-	Aggoiunta la funzione buildResponse per evitare ripetizioni
+	Migliorata l'indentazione delle funzioni
+	Creato il metodo buildResponse per evitare ripetizioni di new ResponseEntity<>
+	Rimosso il Redundant Comment in cima alla classe
 */
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-
-
 	private ResponseEntity<Object> buildResponse(HttpStatus status, Object body) {
     return ResponseEntity.status(status).body(body);
 	}
-	
+
 	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
 	public ResponseEntity<String> handleSQLException(
 					SQLIntegrityConstraintViolationException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+		return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(PSQLException.class)
 	public ResponseEntity<String> handlePSQLException(
 					PSQLException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+		return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(SQLException.class)
 	public ResponseEntity<String> handleSQLException(SQLException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+		return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<String> handleNotFoundException(
 					NotFoundException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+		return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
 	@ExceptionHandler(AccessDeniedException.class)
 	public ResponseEntity<String> handleAccessDeniedException(
 					AccessDeniedException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+		return buildResponse(ex.getMessage(), HttpStatus.FORBIDDEN);
 	}
 
 	@ExceptionHandler(BadRequestException.class)
 	public ResponseEntity<String> handleBadRequestException(BadRequestException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+		return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(BadCredentialsException.class)
 	public ResponseEntity<String> handleBadCredentialsException(
 					BadCredentialsException ex) {
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+		return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler(JwtException.class)
-	public ResponseEntity<String> handleExpiredJwtException(JwtException ex) {
+	// Refactoring
+	// rinominata la funzione da handleExpiredJwtException a handleJwtException
+	// in quanto non tratta solo JWT scaduti
+	public ResponseEntity<String> handleJwtException(JwtException ex) {
 		System.out.println(ex.getMessage());
-		return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
+		return buildResponse(ex.getMessage(), HttpStatus.FORBIDDEN);
 	}
 
 	@ExceptionHandler(ConstraintViolationException.class)
@@ -90,7 +92,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 													.map(x -> x.getMessage())
 													.collect(Collectors.toList());
 
-		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+		return buildResponse(errors, HttpStatus.BAD_REQUEST);
 	}
 
 	@Override
@@ -101,6 +103,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		List<String> errors = ex.getBindingResult().getFieldErrors()
 													.stream().map(x -> x.getDefaultMessage())
 													.collect(Collectors.toList());
-		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+		return buildResponse(errors, HttpStatus.BAD_REQUEST);
 	}
 }
