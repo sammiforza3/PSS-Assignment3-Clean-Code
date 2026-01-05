@@ -1,0 +1,228 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\title{Relazione -- Assignment 3\\\large Clean Code}
+\date{}
+\author{}
+
+\begin{document}
+\maketitle
+
+\section*{TODO}
+\begin{itemize}
+  \item Controllare il metodo \texttt{convertDBColumnIntoAttribute} (nel refactor) per verificare se il nome scelto è corretto.
+\end{itemize}
+
+\section*{Repository analizzata}
+\href{https://github.com/RishabhS66/Expense-Management-Software-Backend}{https://github.com/RishabhS66/Expense-Management-Software-Backend}
+
+\section*{Assignment scelto}
+L'assignment scelto è \textbf{Clean Code}. L'attività prevede la selezione e l'analisi di \textbf{5 classi eterogenee} appartenenti a un progetto software.
+
+\section*{Descrizione del progetto}
+Il progetto scelto è il backend di un software per l'automazione dei processi di compilazione e inoltro delle richieste di rimborso spese da parte dei dipendenti di un'azienda.
+
+Il progetto è implementato interamente in \textbf{Java}, utilizzando un'architettura \textbf{multistrato} basata su un modello \textbf{MVC esteso}. Sono presenti le tipologie di classi tipiche di tale architettura:
+\begin{itemize}
+  \item \textbf{Controller}: REST controller utilizzati per il routing delle richieste ai livelli sottostanti.
+  \item \textbf{Service}: classi dedicate all'implementazione della logica di business.
+  \item \textbf{DAO/Repository}: classi per separare dati e logica applicativa e per l'accesso al database.
+  \item \textbf{Entity}: modellazione dei dati come oggetti persistenti, derivati dalla modellazione delle tabelle del DB (ORM).
+  \item \textbf{Util}: insieme eterogeneo di classi di supporto (es.\ conversione JSON $\leftrightarrow$ oggetti Java).
+\end{itemize}
+
+\section*{Classi selezionate}
+Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee, sia per scopo sia per livello dell'MVC esteso di appartenenza:
+
+\begin{itemize}
+  \item \textbf{ExpenseController.java} (\textit{link})\\
+  \textit{Classe RestController}: gestisce il mapping degli URL e le richieste HTTP relative alle spese.\\
+  \textbf{197} righe di codice.
+
+  \item \textbf{Address.java} (\textit{link})\\
+  \textit{Classe \texttt{@Entity}}: rappresenta in Java la tabella di database \texttt{address} (mappatura ORM).\\
+  \textbf{208} righe di codice.
+
+  \item \textbf{ExpenseService.java} (\textit{link})\\
+  \textit{Classe \texttt{@Service}}: contiene la logica applicativa e invoca i metodi del DAO/repository \texttt{expenses}, che esegue le query sul database per recuperare i dati dalla tabella \texttt{expenses}.\\
+  \textbf{143} righe di codice.
+
+  \item \textbf{GenericJsonAttributeConverter.java} (\textit{link})\\
+  \textit{Classe utility (converter JPA)}: serializza un oggetto in una stringa JSON per salvarlo nel database e deserializza una stringa JSON per ricostruire l'oggetto.\\
+  \textbf{199} righe di codice.
+
+  \item \textbf{GlobalExceptionHandler.java} (\textit{link})\\
+  \textit{Classe di gestione eccezioni (handler globale)}: estende \texttt{ResponseEntityExceptionHandler} e definisce metodi \texttt{@ExceptionHandler} per gestire eccezioni dell'applicazione (es.\ accesso negato, errori PostgreSQL), restituendo risposte HTTP appropriate.\\
+  \textbf{87} righe di codice.
+\end{itemize}
+
+\section*{Analisi di conformità a Clean Code (per classe)}
+
+\subsection*{ExpenseController.java}
+\begin{itemize}
+  \item L'indentazione non rispetta pienamente i principi del Clean Code: sono presenti parentesi annidate difficili da leggere e righe troppo lunghe in orizzontale (oltre 90 colonne).
+  \item Vengono ripetuti frequentemente i seguenti controlli, che potrebbero essere estratti in metodi dedicati:
+  \begin{itemize}
+    \item \verb|emp.getId() == expense.getEmployee().getId()|
+    \item \verb|expense.getProject().getProjectManager().getId() == emp.getId()|
+  \end{itemize}
+  \item Alcuni nomi di variabili non sono abbastanza descrittivi; in alcuni casi sono singole lettere (es.\ variabili di tipo \texttt{Expense} chiamate semplicemente \texttt{e}).
+  \item Alla riga 158 è presente \textit{commented-out code}.
+\end{itemize}
+
+\textbf{Funzioni (pinch principles)}
+\begin{itemize}
+  \item \textbf{Lunghezza delle funzioni}: rispettata.
+  \item \textbf{Nameable}: le funzioni sono descrittive nel nome.
+  \item \textbf{Insulated}: le funzioni hanno meno di 4 parametri.
+  \item \textbf{Homogeneous}: le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione.
+  \item \textbf{Contextual}: il contesto del controller è rispettato.
+  \item \textbf{Pure}: le funzioni dipendono dai loro argomenti.
+  \item \textbf{Command--Query Separation}: rispettata.
+\end{itemize}
+
+\subsection*{ExpenseService.java}
+\begin{itemize}
+  \item Indentazione non ottimale e lunghezza orizzontale eccessiva (oltre 90 colonne).
+  \item Presente \textit{commented-out code} alle righe 139 e 140.
+  \item Argomenti di funzione denominati con singola lettera, riducendo la leggibilità.
+  \item La funzione \texttt{getExpenseTotal} non restituisce solo il totale, ma un report completo: il nome non è rappresentativo della logica.
+\end{itemize}
+
+\textbf{Funzioni (pinch principles)}
+\begin{itemize}
+  \item \textbf{Lunghezza delle funzioni}: rispettata.
+  \item \textbf{Nameable}: le funzioni sono descrittive nel nome.
+  \item \textbf{Insulated}: le funzioni hanno meno di 4 parametri.
+  \item \textbf{Homogeneous}: le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione.
+  \item \textbf{Contextual}: il contesto del service è rispettato.
+  \item \textbf{Pure}: le funzioni dipendono dai loro argomenti.
+  \item \textbf{Command--Query Separation}: rispettata.
+\end{itemize}
+
+\subsection*{Address.java}
+\begin{itemize}
+  \item Sono presenti molti commenti: sia Javadoc sia \textit{noise comments}. Secondo le indicazioni del Clean Code, non essendo un'API pubblica, i commenti Javadoc risultano superflui e candidati alla rimozione.
+  \item L'indentazione del metodo \texttt{toString()} produce righe troppo lunghe in orizzontale (oltre 90 colonne).
+\end{itemize}
+
+\textbf{Funzioni (pinch principles)}
+\begin{itemize}
+  \item \textbf{Lunghezza delle funzioni}: rispettata.
+  \item \textbf{Nameable}: i nomi rispettano la struttura standard per una classe Java.
+  \item \textbf{Insulated}: le funzioni accettano al massimo 1 parametro; tuttavia, il costruttore ne accetta 9.
+  \item \textbf{Homogeneous}: le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione.
+  \item \textbf{Contextual}: il contesto è rispettato.
+  \item \textbf{Pure}: le funzioni dipendono dai loro argomenti.
+  \item \textbf{Command--Query Separation}: rispettata.
+\end{itemize}
+
+\subsection*{GenericJsonAttributeConverter.java}
+\begin{itemize}
+  \item Nome della classe poco efficace: \texttt{Generic} non aggiunge informazione utile.
+  \item Righe troppo lunghe in orizzontale (oltre 90 colonne).
+  \item Indentazione delle parentesi non ottimale.
+  \item Presenti diversi \textit{noise comments} e \textit{redundant comments}.
+\end{itemize}
+
+\textbf{Funzioni (pinch principles)}
+\begin{itemize}
+  \item \textbf{Lunghezze}: funzioni generalmente brevi.
+  \item \textbf{Nameable}: nomi di variabili e argomenti poco espressivi, che rendono più faticoso capire lo scopo delle funzioni. Esempio:
+  \begin{itemize}
+    \item \verb|public X convertToEntityAttribute(String dbData)|
+  \end{itemize}
+  \item \textbf{Nameable (coerenza)}: il nome \texttt{convertToEntityAttribute} non è pienamente coerente con il reale comportamento della funzione.
+  \item \textbf{Insulated}: rispettato.
+  \item \textbf{Homogeneous}: istruzioni omogenee e allo stesso livello di astrazione.
+  \item \textbf{Contextual}: il contesto è rispettato.
+  \item \textbf{Pure}: le funzioni dipendono dai loro argomenti.
+\end{itemize}
+
+\subsection*{GlobalExceptionHandler.java}
+\begin{itemize}
+  \item Indentazione non conforme ai principi del Clean Code: parentesi annidate difficili da leggere e righe troppo lunghe (oltre 90 colonne).
+  \item La costruzione di \texttt{ResponseEntity<>} è ripetuta in quasi tutti i metodi; sarebbe preferibile estrarla in un metodo di supporto.
+  \item Presente un \textit{redundant comment} in cima alla classe che ripete solo il nome della classe.
+\end{itemize}
+
+\textbf{Funzioni (pinch principles)}
+\begin{itemize}
+  \item \textbf{Lunghezza delle funzioni}: rispettata.
+  \item \textbf{Nameable}: la funzione \texttt{handleExpiredJwtException} non tratta solo JWT scaduti, ma JWT in generale; il nome risulta quindi fuorviante.
+  \item \textbf{Insulated}: le funzioni accettano al massimo 2 parametri; tuttavia, viene citato un costruttore con 9 parametri.
+  \item \textbf{Homogeneous}: istruzioni omogenee e allo stesso livello di astrazione.
+  \item \textbf{Contextual}: il contesto è rispettato.
+  \item \textbf{Pure}: le funzioni dipendono dai loro argomenti.
+  \item \textbf{Command--Query Separation}: rispettata.
+\end{itemize}
+
+\section*{Modifiche effettuate per migliorare la conformità a Clean Code}
+
+\subsection*{ExpenseController.java}
+Link
+\begin{itemize}
+  \item Migliorata l'indentazione delle funzioni per ridurre la \textit{horizontal length} e aumentare la leggibilità.
+  \item Indentate le parentesi in modo più efficace.
+  \item Nella classe \texttt{ExpenseService} sono stati aggiunti i metodi \texttt{isOwner(emp, expense)} e \texttt{isManager(emp, expense)} per evitare la ripetizione eccessiva dei controlli:
+  \begin{itemize}
+    \item \verb|emp.getId() == expense.getEmployee().getId()|
+    \item \verb|expense.getProject().getProjectManager().getId() == emp.getId()|
+  \end{itemize}
+  \item Rimosso il codice commentato alla riga 158.
+\end{itemize}
+
+\subsection*{ExpenseService.java}
+Link
+\begin{itemize}
+  \item Migliorata l'indentazione.
+  \item Aggiunte le funzioni di supporto \texttt{isManager} e \texttt{isOwner} per evitare ripetizioni nel controller e mantenere \texttt{ExpenseController} il più leggero possibile, in linea con l'architettura MVC estesa.
+  \item Rinominata la funzione \texttt{getExpenseTotal} in \texttt{getExpenseReports}.
+\end{itemize}
+
+\subsection*{Address.java}
+Link
+\begin{itemize}
+  \item Migliorata l'indentazione.
+  \item Rinominate le variabili \texttt{addressLine1} e \texttt{addressLine2} in \texttt{firstAddress} e \texttt{secondAddress}, e aggiornati i relativi getter e setter.
+  \item Il costruttore ora accetta una struttura dinamica \texttt{AddressData}, contenente i dati necessari per inizializzare correttamente l'oggetto \texttt{Address}.
+  \item Rimossi i \textit{noise comments} intrusivi.
+\end{itemize}
+
+\subsection*{GlobalExceptionHandler.java}
+Link
+\begin{itemize}
+  \item Migliorata l'indentazione.
+  \item Creata la funzione \texttt{buildResponse} per centralizzare la costruzione delle \texttt{ResponseEntity}.
+  \item Rinominata la funzione \texttt{handleExpiredJwtException} in \texttt{handleJwtException}.
+  \item Rimosso il commento ridondante iniziale.
+\end{itemize}
+
+\subsection*{GenericJsonAttributeConverter.java}
+Link
+\begin{itemize}
+  \item Migliorata l'indentazione.
+  \item Rinominata la classe in \texttt{JsonAttributeConverter}.
+  \item Rimossi commenti \textit{noise} e commenti che descrivevano il funzionamento ovvio del codice.
+  \item \textbf{Pinch -- Nameable}: modificati i nomi di funzioni e variabili per renderli più espressivi.
+  \item Rinominato \texttt{JsonTypeLike} in \texttt{JsonTypedWrapper}.
+  \item Rinominato \texttt{convertToEntityAttribute} in \texttt{converDBtColumnIntoAttributex} (nota: verificare anche la correttezza del nome, vedi sezione TODO).
+  \item \textbf{Homogeneous}: le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione.
+  \item \textbf{Contextual}: il contesto è rispettato.
+\end{itemize}
+
+\section*{Componenti del gruppo}
+\begin{tabular}{ll}
+\textbf{Nome} & \textbf{Matricola}\\
+\hline
+Bergamin Samuele & 844861\\
+Andrea Ciacci & 899883\\
+Baggio Tommaso & 912356\\
+\end{tabular}
+
+\end{document}

@@ -94,7 +94,7 @@ public class JsonAttributeConverter<X> implements AttributeConverter<X, String> 
  		//Refactoring
  		//spostato attribute == null all'inizio per efficienza e maggiore lettura
     //cambiato convertToEntityAttribute in converDBtColumnIntoAttributex
-    public X converDBtColumnIntoAttribute(String dbData) {
+    public X convertDBColumnIntoAttribute(String dbData) {
 
         if (dbData == null) {
             return null;

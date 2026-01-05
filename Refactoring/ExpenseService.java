@@ -26,7 +26,7 @@ import com.adobe.prj.exceptions.NotFoundException;
 @Service
 /*Refactoring generale
 	Migliorata l'indentazione per una migliore lettura
-	Aggiunte le classi di supporto isManager e isOwner per effettuare
+	Aggiunte le funzioni di supporto isManager e isOwner per effettuare
 	controlli senza dover ripetere il codice all'interno
 */
 public class ExpenseService {
@@ -101,7 +101,7 @@ public class ExpenseService {
 		try {
 			return expenseDao.findByStatus(id);
 		} catch (Exception e) {
-			throw new NotFoundException(	"Expense does not exist for the status");
+			throw new NotFoundException("Expense does not exist for the status");
 		}
 	}
 
@@ -125,7 +125,7 @@ public class ExpenseService {
 
 	@Transactional
 	public List<Expense> getExpenseByStatusforProject(
-		int pid,int status) {
+		int pid, int status) {
 		return expenseDao.findByProjectStatus(pid, status);
 	}
 
