@@ -31,11 +31,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
  * @param <X>
  */
 
- /*Refactoring generale
- 	Migliorata l'indentazione delle funzioni per evitare eccessiva Horizontal Length
- 	Indentate le parentesi con maggiore efficacia per una migliore lettura
-	Cambiato il nome da GenericJsonAttributeConverter a JsonAttributeConverter
- */
+
 public class JsonAttributeConverter<X> implements AttributeConverter<X, String> {
 
     protected static final Logger LOG =
@@ -49,8 +45,7 @@ public class JsonAttributeConverter<X> implements AttributeConverter<X, String> 
 		 */
     private final ObjectReader reader;
 
-		//Refactoring
-		//Rimossi noise comments
+		
     public JsonAttributeConverter() {
 
         ObjectMapper mapper = new ObjectMapper();
@@ -70,11 +65,8 @@ public class JsonAttributeConverter<X> implements AttributeConverter<X, String> 
         writer = mapper.writer().forType(JsonTypedWrapper.class);
     }
 
-    //Refactor
-    //Rimosso Redundant Comment
+ 
     @Override
-		//Refactoring
-		//spostato attribute == null all'inizio per efficienza e maggiore lettura
     public String convertToDatabaseColumn(X attribute) {
 
         if (attribute == null) {
@@ -91,9 +83,7 @@ public class JsonAttributeConverter<X> implements AttributeConverter<X, String> 
         }
     }
 
- 		//Refactoring
- 		//spostato attribute == null all'inizio per efficienza e maggiore lettura
-    //cambiato convertToEntityAttribute in converDBtColumnIntoAttributex
+ 		
     public X convertDBColumnIntoAttribute(String dbData) {
 
         if (dbData == null) {
@@ -122,9 +112,7 @@ public class JsonAttributeConverter<X> implements AttributeConverter<X, String> 
   	 *
   	 * @param <Y>
   	 */
-		//Refactoring
-		//Rinominato JsonTypeLike in JsonTypedWrapper
-		//Rimossi i noise comment
+		
     public static class JsonTypedWrapper<Y> {
 
         private String entityType;
@@ -161,8 +149,7 @@ public class JsonAttributeConverter<X> implements AttributeConverter<X, String> 
 				 * @param reader
 				 * @return
 				 */
-				//Refactoring
-				//destinationClassType invece di clazz
+			
         public Y readValue(ObjectReader reader) {
 
             try {

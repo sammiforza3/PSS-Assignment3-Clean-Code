@@ -45,15 +45,7 @@ import io.swagger.annotations.ApiOperation;
     value = "ExpenseController",
     description = "REST APIs related to Expense Entity"
 )
-/*Refactoring generale
-	Migliorata l'indentazione delle funzioni per evitare eccessiva Horizontal Length
-	Indentate le parentesi con maggiore efficacia per una migliore lettura
-	Nella classe ExpenseService sono state aggiunte le classi isOwner(emp,expense) e
-  isManager(emp,expense), per evitare di ripetere il controllo emp.getId() ==
-  expense.getEmployee().getId()) e expense.getProject().getProjectManager()
-  .getId() == emp.getId()) che precedentemente erano stati usati eccessivamente
-  in questa classe
-*/
+
 public class ExpenseController {
 
     @Autowired
@@ -86,8 +78,6 @@ public class ExpenseController {
         tags = "getExpense"
     )
     @GetMapping("/{eid}")
-		//Refactoring:
-		//expense invece di e
     public @ResponseBody Expense getExpense(
             @PathVariable("eid") int id)
             throws AccessDeniedException, NotFoundException {
@@ -140,9 +130,6 @@ public class ExpenseController {
         tags = "getExpenseByProject"
     )
     @GetMapping("/projects/{pid}")
-		//Refactoring:
-		//expense invece di e
-		//p invece di Project all'interno del for
     public @ResponseBody List<Expense> getExpenseByProject(
             @PathVariable("pid") int projectId)
             throws NotFoundException, AccessDeniedException {
@@ -214,9 +201,6 @@ public class ExpenseController {
         method = RequestMethod.PATCH,
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
-		//Refactoring:
-		//expense invece di e
-		//Diviso l'if in più variabili per rendere più chiaro lo scopo
     public @ResponseBody Expense updateExpenseStatus(
             @RequestBody Map<String, Object> updates,
             @PathVariable("id") int id)
@@ -250,11 +234,6 @@ public class ExpenseController {
         method = RequestMethod.PATCH,
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
-		//Refactoring:
-    //expense invece di e
-		//Rimosso Commented-out code
-		//Rimosso Noise-comment
-		//Diviso l'if in più variabili per rendere più chiaro lo scopo
     public @ResponseBody Expense updateExpense(
             @RequestBody Map<String, Object> updates,
             @PathVariable("id") int id)
@@ -285,9 +264,6 @@ public class ExpenseController {
     )
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-		//Refactoring:
-		//expense invece di e
-		//Diviso l'if in più variabili per rendere più chiaro lo scopo
     public void deleteExpense(
             @PathVariable("id") int id)
             throws NotFoundException, AccessDeniedException {
@@ -310,10 +286,6 @@ public class ExpenseController {
     )
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-		//Refactoring:
-		//expense invece di e
-		//id_list invece di ids
-		//Diviso l'if in più variabili per rendere più chiaro lo scopo
     public void deleteExpenses(
             @Valid @RequestBody List<Integer> id_list)
             throws NotFoundException, AccessDeniedException {

@@ -22,12 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import io.jsonwebtoken.JwtException;
 
 
-/*
-	Refactoring generale
-	Migliorata l'indentazione delle funzioni
-	Creato il metodo buildResponse per evitare ripetizioni di new ResponseEntity<>
-	Rimosso il Redundant Comment in cima alla classe
-*/
+
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -76,9 +71,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(JwtException.class)
-	// Refactoring
-	// rinominata la funzione da handleExpiredJwtException a handleJwtException
-	// in quanto non tratta solo JWT scaduti
 	public ResponseEntity<String> handleJwtException(JwtException ex) {
 		System.out.println(ex.getMessage());
 		return buildResponse(ex.getMessage(), HttpStatus.FORBIDDEN);

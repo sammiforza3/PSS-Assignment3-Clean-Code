@@ -24,11 +24,6 @@ import com.adobe.prj.exceptions.BadRequestException;
 import com.adobe.prj.exceptions.NotFoundException;
 
 @Service
-/*Refactoring generale
-	Migliorata l'indentazione per una migliore lettura
-	Aggiunte le funzioni di supporto isManager e isOwner per effettuare
-	controlli senza dover ripetere il codice all'interno
-*/
 public class ExpenseService {
 
 	@Autowired
@@ -36,9 +31,6 @@ public class ExpenseService {
 
 	@Autowired
 	private DocumentDao documentDao;
-
-	//Refactoring
-	//Rinominata la funzione in getExpenseReports
 	public Map<String, Double> getExpenseReports(int pid) {
 		Map<String, Double> map = new HashMap<>();
 
@@ -128,10 +120,6 @@ public class ExpenseService {
 		int pid, int status) {
 		return expenseDao.findByProjectStatus(pid, status);
 	}
-
-
-	//Refactoring
-	//accessor al posto di myAccessor
 	public Expense updateExpenseStatus(
 		Map<String, Object> updates, Expense expense) {
 		PropertyAccessor accessor =
@@ -147,8 +135,6 @@ public class ExpenseService {
 
 	@Valid
 	@Transactional
-	//Refactoring
-	//documents al posto di doc_objs
 	public Expense updateExpense(
 		Map<String, Object> updates,Expense expense)
 		throws BadRequestException {
@@ -180,7 +166,4 @@ public class ExpenseService {
 		}
 		return expenseDao.save(expense);
 	}
-
-	//Refactoring
-	//Rimossa una funzione commented-out
 }

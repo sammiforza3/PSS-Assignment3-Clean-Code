@@ -5,9 +5,7 @@ import java.io.Serializable;
 import javax.validation.constraints.NotEmpty;
 
 
- /* Refactoring generale
-  Rinominati addressLine1 ed addressLine2 in firstAddress e secondAddress
- */
+ 
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 1L;
