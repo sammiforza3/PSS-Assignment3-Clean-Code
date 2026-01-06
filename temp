@@ -1,7 +1,0 @@
-Migliorata l'indentazione delle funzioni per evitare eccessiva Horizontal Length
-	Indentate le parentesi con maggiore efficacia per una migliore lettura
-	Nella classe ExpenseService sono state aggiunte le classi isOwner(emp,expense) e
-  isManager(emp,expense), per evitare di ripetere il controllo emp.getId() ==
-  expense.getEmployee().getId()) e expense.getProject().getProjectManager()
-  .getId() == emp.getId()) che precedentemente erano stati usati eccessivamente
-  in questa classe
