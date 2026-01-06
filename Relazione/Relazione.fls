@@ -114,6 +114,7 @@ INPUT ./Relazione.toc
 INPUT Relazione.toc
 OUTPUT Relazione.toc
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecti1095.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
@@ -121,15 +122,14 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecit1095.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1095.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT Relazione.aux
 INPUT ./Relazione.out
 INPUT ./Relazione.out
-INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk
 INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk
 INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk
 INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk
 INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk
+INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk
 INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk
 INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk
 INPUT /home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk
