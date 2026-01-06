@@ -2,7 +2,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
+
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage[hidelinks]{hyperref}
 
@@ -10,18 +10,21 @@
 \date{}
 \author{}
 
+
 \begin{document}
+
 \maketitle
+\tableofcontents
 
 \
 
-\section*{Repository analizzata}
+\section{Repository analizzata}
 \href{https://github.com/RishabhS66/Expense-Management-Software-Backend}{https://github.com/RishabhS66/Expense-Management-Software-Backend}
 
-\section*{Assignment scelto}
+\section{Assignment scelto}
 L'assignment scelto è \textbf{Clean Code}. L'attività prevede la selezione e l'analisi di \textbf{5 classi eterogenee} appartenenti a un progetto software.
 
-\section*{Descrizione del progetto}
+\section{Descrizione del progetto}
 Il progetto scelto è il backend di un software per l'automazione dei processi di compilazione e inoltro delle richieste di rimborso spese da parte dei dipendenti di un'azienda.
 
 Il progetto è implementato interamente in \textbf{Java}, utilizzando un'architettura \textbf{multistrato} basata su un modello \textbf{MVC esteso}. Sono presenti le tipologie di classi tipiche di tale architettura:
@@ -33,7 +36,7 @@ Il progetto è implementato interamente in \textbf{Java}, utilizzando un'archite
   \item \textbf{Util}: insieme eterogeneo di classi di supporto (es.\ conversione JSON $\leftrightarrow$ oggetti Java).
 \end{itemize}
 
-\section*{Classi selezionate}
+\section{Classi selezionate}
 Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee, sia per scopo sia per livello dell'MVC esteso di appartenenza:
 
 \begin{itemize}
@@ -58,9 +61,9 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \textbf{87} righe di codice.
 \end{itemize}
 
-\section*{Analisi di conformità a Clean Code (per classe)}
+\section{Analisi di conformità a Clean Code (per classe)}
 
-\subsection*{ExpenseController.java}
+\subsection{ExpenseController.java}
 \begin{itemize}
   \item L'indentazione non rispetta pienamente i principi del Clean Code: sono presenti parentesi annidate difficili da leggere e righe troppo lunghe in orizzontale (oltre 90 colonne).
   \item Vengono ripetuti frequentemente i seguenti controlli, che potrebbero essere estratti in metodi dedicati:
@@ -83,7 +86,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item \textbf{Command--Query Separation}: rispettata.
 \end{itemize}
 
-\subsection*{ExpenseService.java}
+\subsection{ExpenseService.java}
 \begin{itemize}
   \item Indentazione non ottimale e lunghezza orizzontale eccessiva (oltre 90 colonne).
   \item Presente \textit{commented-out code} alle righe 139 e 140.
@@ -102,7 +105,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item \textbf{Command--Query Separation}: rispettata.
 \end{itemize}
 
-\subsection*{Address.java}
+\subsection{Address.java}
 \begin{itemize}
   \item Sono presenti molti commenti: sia Javadoc sia \textit{noise comments}. Secondo le indicazioni del Clean Code, non essendo un'API pubblica, i commenti Javadoc risultano superflui e candidati alla rimozione.
   \item L'indentazione del metodo \texttt{toString()} produce righe troppo lunghe in orizzontale (oltre 90 colonne).
@@ -119,7 +122,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item \textbf{Command--Query Separation}: rispettata.
 \end{itemize}
 
-\subsection*{GenericJsonAttributeConverter.java}
+\subsection{GenericJsonAttributeConverter.java}
 \begin{itemize}
   \item Nome della classe poco efficace: \texttt{Generic} non aggiunge informazione utile.
   \item Righe troppo lunghe in orizzontale (oltre 90 colonne).
@@ -141,7 +144,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item \textbf{Pure}: le funzioni dipendono dai loro argomenti.
 \end{itemize}
 
-\subsection*{GlobalExceptionHandler.java}
+\subsection{GlobalExceptionHandler.java}
 \begin{itemize}
   \item Indentazione non conforme ai principi del Clean Code: parentesi annidate difficili da leggere e righe troppo lunghe (oltre 90 colonne).
   \item La costruzione di \texttt{ResponseEntity<>} è ripetuta in quasi tutti i metodi; sarebbe preferibile estrarla in un metodo di supporto.
@@ -159,9 +162,9 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item \textbf{Command--Query Separation}: rispettata.
 \end{itemize}
 
-\section*{Modifiche effettuate per migliorare la conformità a Clean Code}
+\section{Modifiche effettuate per migliorare la conformità a Clean Code}
 
-\subsection*{ExpenseController.java}
+\subsection{ExpenseController.java}
 \href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/Refactoring/ExpenseController.java}{ExpenseController.java (Refactoring)}
 
 \begin{itemize}
@@ -175,7 +178,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item Rimosso il codice commentato alla riga 158.
 \end{itemize}
 
-\subsection*{ExpenseService.java}
+\subsection{ExpenseService.java}
 \href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/Refactoring/ExpenseService.java}{ExpenseService.java (Refactoring)}
 
 \begin{itemize}
@@ -184,7 +187,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item Rinominata la funzione \texttt{getExpenseTotal} in \texttt{getExpenseReports}.
 \end{itemize}
 
-\subsection*{Address.java}
+\subsection{Address.java}
 \href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/Refactoring/Address.java}{Address.java (Refactoring)}
 \begin{itemize}
   \item Migliorata l'indentazione.
@@ -193,7 +196,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item Rimossi i \textit{noise comments} intrusivi e javadocs comments.
 \end{itemize}
 
-\subsection*{GlobalExceptionHandler.java}
+\subsection{GlobalExceptionHandler.java}
 \href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/Refactoring/GlobalExceptionHandler.java}{GlobalExceptionHandler.java (Refactoring)}
 \begin{itemize}
   \item Migliorata l'indentazione.
@@ -202,7 +205,7 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item Rimosso il commento ridondante iniziale.
 \end{itemize}
 
-\subsection*{GenericJsonAttributeConverter.java}
+\subsection{GenericJsonAttributeConverter.java}
 \href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/Refactoring/JsonAttributeConverter.java}{JsonAttributeConverter.java (Refactoring)}
 \begin{itemize}
   \item Migliorata l'indentazione.
@@ -211,11 +214,9 @@ Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee
   \item \textbf{Pinch -- Nameable}: modificati i nomi di funzioni e variabili per renderli più espressivi.
   \item Rinominato \texttt{JsonTypeLike} in \texttt{JsonTypedWrapper}.
   \item Rinominato \texttt{convertToEntityAttribute} in \texttt{converDBtColumnIntoAttributex} (nota: verificare anche la correttezza del nome, vedi sezione TODO).
-  \item \textbf{Homogeneous}: le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione.
-  \item \textbf{Contextual}: il contesto è rispettato.
 \end{itemize}
 
-\section*{Componenti del gruppo}
+\section{Componenti del gruppo}
 \begin{tabular}{ll}
 \textbf{Nome} & \textbf{Matricola}\\
 \hline
