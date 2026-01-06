@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.12.7)  6 JAN 2026 17:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.12.7)  6 JAN 2026 17:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/samuele/Magistrale/Processi e sviluppo/PSS-Assignment3-Clean-Code/Relazione.tex"
-(/home/samuele/Magistrale/Processi e sviluppo/PSS-Assignment3-Clean-Code/Relazione.tex
+**"/home/samuele/Magistrale/Processi e sviluppo/PSS-Assignment3-Clean-Code/Relazione/Relazione.tex"
+(/home/samuele/Magistrale/Processi e sviluppo/PSS-Assignment3-Clean-Code/Relazione/Relazione.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -259,54 +259,54 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 15.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 18.
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-Overfull \hbox (0.36842pt too wide) in paragraph at lines 30--31
+
+Overfull \hbox (0.36842pt too wide) in paragraph at lines 27--28
 \T1/cmr/m/n/10.95 basata su un modello \T1/cmr/bx/n/10.95 MVC esteso\T1/cmr/m/n/10.95 . Sono presenti le tipologie di classi tipiche di tale architettura: 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 36.
-[1
+(Font)              <10.95> on input line 33.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 45.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (5.46765pt too wide) in paragraph at lines 83--84
+Overfull \hbox (5.46765pt too wide) in paragraph at lines 80--81
 []\T1/cmr/bx/n/10.95 Homogeneous\T1/cmr/m/n/10.95 : le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione. 
  []
 
 [2]
-Overfull \hbox (5.46765pt too wide) in paragraph at lines 102--103
+Overfull \hbox (5.46765pt too wide) in paragraph at lines 99--100
 []\T1/cmr/bx/n/10.95 Homogeneous\T1/cmr/m/n/10.95 : le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione. 
  []
 
 
-Overfull \hbox (5.46765pt too wide) in paragraph at lines 119--120
+Overfull \hbox (5.46765pt too wide) in paragraph at lines 116--117
 []\T1/cmr/bx/n/10.95 Homogeneous\T1/cmr/m/n/10.95 : le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione. 
  []
 
 [3]
-Overfull \hbox (9.52237pt too wide) in paragraph at lines 158--159
+Overfull \hbox (9.52237pt too wide) in paragraph at lines 155--156
 []\T1/cmr/bx/n/10.95 Insulated\T1/cmr/m/n/10.95 : le funzioni accettano al massimo 2 parametri; tuttavia, viene citato un costruttore
  []
 
-[4]
-Overfull \hbox (46.55608pt too wide) in paragraph at lines 173--174
+
+Overfull \hbox (46.55608pt too wide) in paragraph at lines 170--171
 []\T1/cmr/m/n/10.95 Nella classe \T1/cmtt/m/n/10.95 ExpenseService \T1/cmr/m/n/10.95 sono stati aggiunti i metodi \T1/cmtt/m/n/10.95 isOwner(emp, expense) \T1/cmr/m/n/10.95 e \T1/cmtt/m/n/10.95 isManager(emp,
  []
 
-[5]
-Overfull \hbox (22.20544pt too wide) in paragraph at lines 216--217
+[4]
+Overfull \hbox (22.20544pt too wide) in paragraph at lines 213--214
 []\T1/cmr/m/n/10.95 Rinominato \T1/cmtt/m/n/10.95 convertToEntityAttribute \T1/cmr/m/n/10.95 in \T1/cmtt/m/n/10.95 converDBtColumnIntoAttributex \T1/cmr/m/n/10.95 (nota: verificare
  []
 
 
-Overfull \hbox (5.46765pt too wide) in paragraph at lines 217--218
+Overfull \hbox (5.46765pt too wide) in paragraph at lines 214--215
 []\T1/cmr/bx/n/10.95 Homogeneous\T1/cmr/m/n/10.95 : le funzioni contengono istruzioni omogenee e allo stesso livello di astrazione. 
  []
 
-[6] (./Relazione.aux)
+[5] [6] (./Relazione.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -322,18 +322,18 @@ Package rerunfilecheck Info: Checksums for `Relazione.out':
 (rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9259 strings out of 476182
- 145525 string characters out of 5795595
- 1934975 words of memory out of 5000000
+ 9258 strings out of 476182
+ 145544 string characters out of 5795595
+ 1933975 words of memory out of 5000000
  31167 multiletter control sequences out of 15000+600000
  568784 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,79p,393b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Relazione.pdf (6 pages, 110823 bytes).
+ 75i,6n,79p,403b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/samuele/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Relazione.pdf (6 pages, 109846 bytes).
 PDF statistics:
- 404 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
+ 400 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

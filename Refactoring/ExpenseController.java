@@ -98,9 +98,6 @@ public class ExpenseController {
     )
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-		//Refactoring:
-		//expense invece di e
-		//project invece di p, e p invece di Project all'interno del for
     public @ResponseBody Expense addExpense(
             @RequestBody @Valid Expense expense)
             throws AccessDeniedException, NotFoundException {
