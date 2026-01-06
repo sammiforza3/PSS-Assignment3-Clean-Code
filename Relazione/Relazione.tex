@@ -37,23 +37,23 @@ Il progetto è implementato interamente in \textbf{Java}, utilizzando un'archite
 Per soddisfare i requisiti dell'assignment sono state scelte 5 classi eterogenee, sia per scopo sia per livello dell'MVC esteso di appartenenza:
 
 \begin{itemize}
-  \item \textbf{ExpenseController.java} (\textit{link})\\
+  \item \textbf{ExpenseController.java} (\href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/File%20Originali/ExpenseController.java}{Link})\\
   \textit{Classe RestController}: gestisce il mapping degli URL e le richieste HTTP relative alle spese.\\
   \textbf{197} righe di codice.
 
-  \item \textbf{Address.java} (\textit{link})\\
+  \item \textbf{Address.java} (\href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/File%20Originali/Address.java}{Link})\\
   \textit{Classe \texttt{@Entity}}: rappresenta in Java la tabella di database \texttt{address} (mappatura ORM).\\
   \textbf{208} righe di codice.
 
-  \item \textbf{ExpenseService.java} (\textit{link})\\
+  \item \textbf{ExpenseService.java} (\href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/File%20Originali/ExpenseService.java}{Link})\\
   \textit{Classe \texttt{@Service}}: contiene la logica applicativa e invoca i metodi del DAO/repository \texttt{expenses}, che esegue le query sul database per recuperare i dati dalla tabella \texttt{expenses}.\\
   \textbf{143} righe di codice.
 
-  \item \textbf{GenericJsonAttributeConverter.java} (\textit{link})\\
+  \item \textbf{GenericJsonAttributeConverter.java} (\href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/File%20Originali/GenericJsonAttributeConverter.java}{Link})\\
   \textit{Classe utility (converter JPA)}: serializza un oggetto in una stringa JSON per salvarlo nel database e deserializza una stringa JSON per ricostruire l'oggetto.\\
   \textbf{199} righe di codice.
 
-  \item \textbf{GlobalExceptionHandler.java} (\textit{link})\\
+  \item \textbf{GlobalExceptionHandler.java} (\href{https://github.com/sammiforza3/PSS-Assignment3-Clean-Code/blob/main/File%20Originali/GlobalExceptionHandler.java}{Link})\\
   \textit{Classe di gestione eccezioni (handler globale)}: estende \texttt{ResponseEntityExceptionHandler} e definisce metodi \texttt{@ExceptionHandler} per gestire eccezioni dell'applicazione (es.\ accesso negato, errori PostgreSQL), restituendo risposte HTTP appropriate.\\
   \textbf{87} righe di codice.
 \end{itemize}
